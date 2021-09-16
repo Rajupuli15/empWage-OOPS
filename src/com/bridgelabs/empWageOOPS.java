@@ -10,25 +10,25 @@ public class empWageOOPS {
         int IS_PART_TIME = 2;
         int WAGE_PER_HOUR = 20;
         int empHour = 0;
-        int Result = 0;
-        // Computation
-        int empCheck =(int) Math.floor(Math.random() * 10) % 3;
-        System.out.println(empCheck);
-        switch(empCheck){
-            case 1:
-                empHour = 12 ;
-                System.out.println("Employee is Present Full TIme");
-                break;
-            case 2:
-                empHour = 8 ;
-                System.out.println("Employee is Present Part TIme");
-                break;
-            default:
-                empHour = 0 ;
+        int result = 0;
+        int totalWage = 0;
+        for(int i=0;i<=20;i++) {
+            // Computation
+            double empCheck = Math.floor(Math.random() * 10) % 3;
+            System.out.println(empCheck);
+            if (empCheck == IS_FULL_TIME) {
+                System.out.println("Employee is Present Full Time");
+                empHour = 12; }
+            else if (empCheck == IS_PART_TIME) {
+                System.out.println("Employee is Present Part Time");
+                empHour = 8; }
+            else {
                 System.out.println("Employee is Absent");
-                break;}
+                empHour = 0; }
 
-        Result = empHour*WAGE_PER_HOUR;
-        System.out.println(Result);
+            result = empHour*WAGE_PER_HOUR;
+            totalWage = result + totalWage;
+            System.out.println(totalWage);
+        }
     }
 }
