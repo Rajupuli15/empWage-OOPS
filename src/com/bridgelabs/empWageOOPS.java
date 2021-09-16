@@ -1,40 +1,52 @@
 package com.bridgelabs;
 
+import java.util.Random;
+
+
 public class empWageOOPS {
+    // constant
+    public static final int IS_FULLTIME = 1;
+    public static final int IS_PARTTIME = 2;
+    public static final int Emp_Rate_PerHr = 20;
+    public static final int NO_WORKINGDAYS = 20;
+    public static final int MAX_HRS_MONTH = 100;
+
+    public static int computeWage() {
+        // Declaring the variables
+        int empHrs = 0;
+        int empWage = 0;
+        int totalEmpWage = 0;
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
+
+        // Using random method
+
+        while (totalEmpHrs <= MAX_HRS_MONTH && totalWorkingDays < NO_WORKINGDAYS) {
+            totalWorkingDays++;
+            Random random = new Random();
+            int empCheck = random.nextInt(3);
+            switch (empCheck) {
+                case IS_FULLTIME: // FullTime Employee
+                    empHrs = 8;
+                    break;
+                case IS_PARTTIME: // PartTime Employee
+                    empHrs = 4;
+                    break;
+                default:  // Employee is absent
+                    empHrs = 0;
+            }
+            empWage = Emp_Rate_PerHr * empHrs;
+            totalEmpHrs += empHrs;
+            System.out.println("Day : " + totalWorkingDays + " : Employee worked : " + empHrs + " Hours " +
+                    ", Employee Wage : " + empWage);
+        }
+        totalEmpWage = totalEmpHrs * Emp_Rate_PerHr;
+        System.out.println("Total Wages is : " + totalEmpWage);
+        return totalEmpWage;
+    }
 
     public static void main(String[] args) {
-
-        // constants
-
-        int IS_FULL_TIME = 1;
-        int IS_PART_TIME = 2;
-        int WAGE_PER_HOUR = 20;
-        int empHour = 0;
-        int result = 0;
-        int totalWage = 0;
-        int totalEmpHour = 0;
-        for(int i=1;i<=20;i++) {
-            // Computation
-            double empCheck = Math.floor(Math.random() * 10) % 3;
-            System.out.println(empCheck);
-            if (empCheck == IS_FULL_TIME) {
-                System.out.println("Employee is Present Full Time");
-                empHour = 12; }
-            else if (empCheck == IS_PART_TIME) {
-                System.out.println("Employee is Present Part Time");
-                empHour = 8; }
-            else {
-                System.out.println("Employee is Absent");
-                empHour = 0; }
-
-            totalEmpHour = empHour + totalEmpHour;
-            System.out.println(totalEmpHour);
-            if(totalEmpHour >= 100) {
-                break; }
-
-            result = empHour*WAGE_PER_HOUR;
-            totalWage = result + totalWage;
-            System.out.println(totalWage);
-        }
+        System.out.println("Welcome To empWageOOPS");
+        computeWage();
     }
 }
