@@ -12,7 +12,8 @@ public class empWageOOPS {
         int empHour = 0;
         int result = 0;
         int totalWage = 0;
-        for(int i=0;i<=20;i++) {
+        int totalEmpHour = 0;
+        for(int i=1;i<=20;i++) {
             // Computation
             double empCheck = Math.floor(Math.random() * 10) % 3;
             System.out.println(empCheck);
@@ -25,6 +26,11 @@ public class empWageOOPS {
             else {
                 System.out.println("Employee is Absent");
                 empHour = 0; }
+
+            totalEmpHour = empHour + totalEmpHour;
+            System.out.println(totalEmpHour);
+            if(totalEmpHour >= 100) {
+                break; }
 
             result = empHour*WAGE_PER_HOUR;
             totalWage = result + totalWage;
